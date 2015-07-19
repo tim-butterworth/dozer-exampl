@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <mapping map-id="listMapping" type="bi-directional">
+        <class-a>models.ListModel</class-a>
+        <class-b>destinationModels.ListItems</class-b>
+        <field>
+            <a>name</a>
+            <b>someName</b>
+        </field>
+        <field>
+            <a>age</a>
+            <b>atr2</b>
+        </field>
+    </mapping>
+
+    <mapping map-id="rootMapping" type="bi-directional">
+        <class-a>models.TopLevel</class-a>
+        <class-b>destinationModels.MergedModel</class-b>
+        <field>
+            <a>name</a>
+            <b>mergedName</b>
+        </field>
+        <field>
+            <a>color</a>
+            <b>mergedColor</b>
+        </field>
+        <field>
+            <a>secondLevel.name</a>
+            <b>secondName</b>
+        </field>
+        <field>
+            <a>secondLevel.location</a>
+            <b>location</b>
+        </field>
+        <field>
+            <a>secondLevel.thirdLevel.name</a>
+            <b>thirdName</b>
+        </field>
+        <field map-id="listMapping">
+            <a>listModelList</a>
+            <b>listItemsList</b>
+        </field>
+        <field custom-converter="converters.ListToFields">
+            <a>pairItemList</a>
+            <b>field1</b>
+        </field>
+        <field custom-converter="converters.ListToField2s">
+            <a>pairItemList</a>
+            <b>field2</b>
+        </field>
+    </mapping>
+
+
+</mappings>
